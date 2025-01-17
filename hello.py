@@ -13,6 +13,40 @@ def main(page: ft.Page) -> None:
             on_click=lambda e: page.add(ft.Text("This button has been clicked!")),
         ),
     )
+    page.title = "Layouts Example"
+    page.add(
+        ft.Row(
+            [
+                ft.Text("Row Item 1"),
+                ft.Text("Row Item 2"),
+            ]
+        ),
+        ft.Column(
+            [
+                ft.Text("Column Item 1"),
+                ft.Text("Column Item 2"),
+            ]
+        ),
+    )
+    counter = ft.Text("0", size=30)
+
+    def increment(e) -> None:
+        counter.value = str(int(counter.value) + 1)
+        page.update()
+
+    page.title = "Counter App"
+    page.add(counter, ft.ElevatedButton(text="Increment", on_click=increment))
+
+    def navigate_to_next_page(e):
+        page.clean()
+        page.add(ft.Text("Welcome to Page 2!"))
+        page.update()
+
+    page.title = "Navigation Example"
+    page.add(
+        ft.Text("Page 1"),
+        ft.ElevatedButton(text="Go to Page 2", on_click=navigate_to_next_page),
+    )
 
 
 ft.app(target=main)
