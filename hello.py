@@ -28,6 +28,14 @@ def main(page: ft.Page) -> None:
             ]
         ),
     )
+    counter = ft.Text("0", size=30)
+
+    def increment(e):
+        counter.value = str(int(counter.value) + 1)
+        page.update()
+
+    page.title = "Counter App"
+    page.add(counter, ft.ElevatedButton(text="Increment", on_click=increment))
 
 
 ft.app(target=main)
