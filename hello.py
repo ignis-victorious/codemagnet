@@ -30,7 +30,7 @@ def main(page: ft.Page) -> None:
     )
     counter = ft.Text("0", size=30)
 
-    def increment(e):
+    def increment(e) -> None:
         counter.value = str(int(counter.value) + 1)
         page.update()
 
