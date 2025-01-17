@@ -13,6 +13,21 @@ def main(page: ft.Page) -> None:
             on_click=lambda e: page.add(ft.Text("This button has been clicked!")),
         ),
     )
+    page.title = "Layouts Example"
+    page.add(
+        ft.Row(
+            [
+                ft.Text("Row Item 1"),
+                ft.Text("Row Item 2"),
+            ]
+        ),
+        ft.Column(
+            [
+                ft.Text("Column Item 1"),
+                ft.Text("Column Item 2"),
+            ]
+        ),
+    )
 
 
 ft.app(target=main)
