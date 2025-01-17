@@ -37,5 +37,16 @@ def main(page: ft.Page) -> None:
     page.title = "Counter App"
     page.add(counter, ft.ElevatedButton(text="Increment", on_click=increment))
 
+    def navigate_to_next_page(e):
+        page.clean()
+        page.add(ft.Text("Welcome to Page 2!"))
+        page.update()
+
+    page.title = "Navigation Example"
+    page.add(
+        ft.Text("Page 1"),
+        ft.ElevatedButton(text="Go to Page 2", on_click=navigate_to_next_page),
+    )
+
 
 ft.app(target=main)
